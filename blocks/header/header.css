@@ -1,0 +1,11 @@
+.header {
+  padding: 119px 0 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  position: relative;
+}
+
+@media (max-width:540px) {
+  .header {
+    padding-left: 19px;
+  }
+}
