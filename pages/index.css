@@ -11,4 +11,7 @@
 
 /***  PROFILE  ***/
 @import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__image/profile__image.css');
+@import url('../blocks/profile/__info/profile__info.css');
+
 
