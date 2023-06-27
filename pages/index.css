@@ -32,4 +32,6 @@
 
 /***  POPUP  ***/
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__box/popup__box.css');
+
 
