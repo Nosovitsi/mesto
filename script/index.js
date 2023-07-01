@@ -1,12 +1,12 @@
 // Находим форму в DOM
 
-let popup = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
   // Находим поля формы в DOM
-let nameValue = document.querySelector('.profile__name');
-let jobValue = document.querySelector('.profile__job');
-let closeEditButton = popupEdit.querySelector('.popup__close-button')
-let nameInput = document.querySelector('.popup__input_type_name');
-let jobInput = document.querySelector('.popup__input_type_job');
+const nameValue = document.querySelector('.profile__name');
+const jobValue = document.querySelector('.profile__job');
+const closeEditButton = popupEdit.querySelector('.popup__close-button')
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_job');
 
     // Обработчик «отправки» формы, хотя пока
     // она никуда отправляться не будет
