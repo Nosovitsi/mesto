@@ -1,15 +1,14 @@
 .header__logo {
+  display: flex;
   width: 142px;
   height: 33px;
-  position: absolute;
-  top: 45px;
+  padding: 45px 0 41px;
 }
 
 @media (max-width:540px) {
   .header__logo {
     width: 103.74px;
     height: 24.4px;
-    top: 28px;
-    left: 27px;
+    padding: 28px 0 27px;
   }
 }
