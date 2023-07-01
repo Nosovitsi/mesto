@@ -9,7 +9,7 @@
 }
 
 @media (max-width:540px) {
-  .popup__box {
+  .popup__container {
     padding: 25px 22px;
     width: 282px;
   }
