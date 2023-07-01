@@ -5,4 +5,7 @@
   font-weight: 900;
   line-height: 1.21;
   max-width: 190px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
