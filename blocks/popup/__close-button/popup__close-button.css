@@ -2,8 +2,11 @@
   width: 32px;
   height: 32px;
   position: absolute;
-  top: -20px;
-  right: -20px;
+  top: -40px;
+  right: -40px;
   background-image: url("../../../images/close.svg");
   background-repeat: no-repeat;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 }

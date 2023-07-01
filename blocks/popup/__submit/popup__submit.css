@@ -1,8 +1,10 @@
 .popup__submit {
   display: block;
-  width: 100%;
+  width: 358px;
   height: 50px;
   margin-top: 57px;
+  margin-left: 36px;
+  margin-bottom: 37px;
   color: #FFF;
   background-color: #000;
 
