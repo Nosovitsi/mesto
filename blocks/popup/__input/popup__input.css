@@ -9,9 +9,16 @@
   font-size: 14px;
   line-height: 1.2;
   margin-left: 36px;
-  padding-bottom: 13px;
+  padding: 0 0 13px 0;
 }
 
 .popup__input:nth-child(2) {
   padding-top: 30px;
+}
+
+@media (max-width:540px) {
+  .popup__input {
+    width: 238px;
+    margin-left: 22px;
+  }
 }

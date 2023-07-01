@@ -15,3 +15,10 @@
   line-height: 1.22;
   text-align: center;
 }
+
+@media (max-width:540px) {
+  .popup__submit {
+    width: 238px;
+    margin-left: 22px;
+  }
+}
