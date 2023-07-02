@@ -10,3 +10,17 @@
   cursor: pointer;
   background-color: #000000;
 }
+
+.profile__edit-button:hover {
+  opacity: 0.6;
+}
+
+@media (max-width:540px) {
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    background-size: 7.5px 7.5px;
+    left: 8px;
+    top: 8.25px;
+  }
+}

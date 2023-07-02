@@ -5,9 +5,12 @@
   font-weight: 500;
   margin: 0;
   padding: 25.75px 0 0 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-@media (max-width:768px) {
+@media (max-width:540px) {
   .profile__name {
     max-width: 189px;
     font-size: 27px;
