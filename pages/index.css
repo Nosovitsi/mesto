@@ -1,17 +1,17 @@
 /***  VENDOR  ***/
-@import url('../vendor/normalize.css');
-@import url('../vendor/fonts/fonts.css');
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
 
 /***  BODY  ***/
-@import url('../blocks/body/body.css');
+@import url(../blocks/body/body.css);
 
 /***  HEADER  ***/
-@import url('../blocks/header/header.css');
-@import url('../blocks/header/__logo/header__logo.css');
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
 
 /***  PROFILE  ***/
-@import url('../blocks/profile/profile.css');
-@import url('../blocks/profile/__image/profile__image.css');
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__image/profile__image.css);
 @import url('../blocks/profile/__box/profile__box.css');
 @import url('../blocks/profile/__info/profile__info.css');
 @import url('../blocks/profile/__name/profile__name.css');
