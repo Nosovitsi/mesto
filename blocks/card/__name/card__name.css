@@ -1,0 +1,8 @@
+.element__name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 25px 15px 31px 21px;
+  position: relative;
+}
