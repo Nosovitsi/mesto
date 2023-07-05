@@ -21,11 +21,14 @@
 
 /***  CARDS  ***/
 @import url('../blocks/cards/cards.css');
-@import url('../blocks/cards/__item/cards__item.css');
-@import url('../blocks/cards/__image/cards__image.css');
-@import url('../blocks/cards/__name/cards__name.css');
-@import url('../blocks/cards/__description/cards__description.css');
-@import url('../blocks/cards/__like/cards__like.css');
+
+/***  CARD  ***/
+@import url('../blocks/card/card.css');
+@import url('../blocks/card/__delete/card__delete.css');
+@import url('../blocks/card/__image/card__image.css');
+@import url('../blocks/card/__description/card__description.css');
+@import url('../blocks/card/__name/card__name.css');
+@import url('../blocks/card/__like/card__like.css');
 
 /***  FOOTER  ***/
 @import url('../blocks/footer/footer.css');
