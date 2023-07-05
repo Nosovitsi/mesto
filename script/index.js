@@ -8,25 +8,39 @@ const jobValue = document.querySelector('.profile__job');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
-function popupOpen() {
+/* Edit Btn */
+function popupOpenEditBtn() {
   nameInput.value = nameValue.textContent;
   jobInput.value = jobValue.textContent;
   popup.classList.add('popup_opened');
 }
 
-function popupClose() {
+function popupCloseEditBtn() {
   popup.classList.remove('popup_opened');
 }
 
-function handleFormSubmit(evt){
+function handleFormSubmit(evt) {
   evt.preventDefault();
   nameValue.textContent = nameInput.value;
   jobValue.textContent = jobInput.value;
 
-  popupClose();
+  popupCloseEditBtn();
 }
 
-editBtnProfile.addEventListener('click',popupOpen);
-popupCloseBtn.addEventListener('click', popupClose);
+/* Add Btn */
+function popupOpenAddBtn() {
+  nameInput.value = nameValue.textContent;
+  jobInput.value = jobValue.textContent;
+  popup.classList.add('popup_opened');
+}
+
+function popupCloseAddBtn() {
+  popup.classList.remove('popup_opened');
+}
+
+
+
+editBtnProfile.addEventListener('click',popupOpenEditBtn);
+popupCloseBtn.addEventListener('click', popupCloseEditBtn);
 
 popupForm.addEventListener('submit', handleFormSubmit);

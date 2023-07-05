@@ -76,7 +76,8 @@
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
   <!---  Popup  --->
-  <div class="popup">
+  <!---  Popup edit  --->
+  <div class="popup popup_edit">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
@@ -87,6 +88,25 @@
       </form>
     </div>
   </div>
+  <!---  Popup add  --->
+  <div class="popup popup_add_card">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form class="popup__form" name="card_information">
+        <input class="popup__input popup__input_name" id="place-input" type="text" name="место" placeholder="Название" >
+        <input class="popup__input popup__input_link" id="link-input" type="url" name="картинка" placeholder="Ссылка на картинку">
+      </form>
+    </div>
+  </div>
+  <!---  Popup view  --->
+  <div class="popup popup_view">
+      <div class="popup__container popup__container_view">
+        <button class="popup__close-button" type="button"></button>
+        <img src="#" alt="#" class="popup__view-image">
+        <p class="popup__description"></p>
+       </div>
+    </div>
 <!---  Script  --->
   <script src="./script/index.js"></script>
 </body>
