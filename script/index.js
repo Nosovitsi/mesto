@@ -20,6 +20,11 @@ const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('#add-card');
 const editCard = document.querySelector('#edit-card');
 
+const cards = document.querySelector('.cards')
+const template = document.querySelector('.template')
+const viewCard = document.querySelector("#view-card");
+const viewCardCloseBtn = document.querySelector("#close-card");
+
 /* Edit Btn */
 function popupOpenEditBtn() {
     nameInput.value = nameValue.textContent;
@@ -58,20 +63,27 @@ addFormCloseButton.addEventListener('click', () => {
 editFormCloseButton.addEventListener('click', () => {
     editCard.classList.remove('popup_opened');
 });
-
+viewCardCloseBtn.addEventListener('click', () => {
+  viewCard.classList.remove('popup_opened');
+}
+  )
 
 /*Profile add image*/
 profileAddButton.addEventListener('click', popupOpenAddBtn);
 
 popupForm.addEventListener('submit', handleFormSubmit);
 
-const cards = document.querySelector('.cards')
-const template = document.querySelector('.template')
 
 function renderCard(card) {
     let temp = document.getElementsByTagName("template")[0];
     const clone = temp.content.cloneNode(true);
-    clone.querySelector('.card__image').src = card.link;
+    const img = clone.querySelector('.card__image');
+    img.src = card.link;
+    img.addEventListener( 'click', function(evt){
+      viewCard.querySelector('.popup__view-image').src = card.link;
+      viewCard.querySelector('.popup__description').textContent = card.name;
+      viewCard.classList.add('popup_opened');
+    } )
     clone.querySelector('.card__description').textContent = card.name;
     clone.querySelector('.card__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('card__like_active')
@@ -97,8 +109,8 @@ addCard.addEventListener('submit', function (evt) {
     popupCloseAddBtn();
 })
 
-/* like */
-
-const likeHeart = (event) => {
-  event.target.classList.toggle("test");
-};
+document.body.addEventListener('keydown', evt => {
+  if (evt.keyCode === 27) {
+    closePopup()
+  }
+})

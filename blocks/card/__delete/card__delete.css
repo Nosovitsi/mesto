@@ -8,8 +8,10 @@
   z-index: 1;
   cursor: pointer;
   border: none;
+  color: inherit;
+  background-color: transparent;
 }
 
-.element__delete:hover {
+.card__delete:hover {
   opacity: 0.6;
 }

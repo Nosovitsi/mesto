@@ -8,6 +8,8 @@
   cursor: pointer;
   font: inherit;
   border: none;
+  color: inherit;
+  background-color: transparent;
 }
 
 .card__like:hover {
