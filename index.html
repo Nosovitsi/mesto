@@ -79,9 +79,9 @@
   </footer>
   <!---  Popup  --->
   <!---  Popup edit  --->
-  <div class="popup popup_edit">
+  <div id="edit-card" class="popup popup_edit">
     <div class="popup__container">
-      <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+      <button id="close-edit-form" class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="profile_information">
         <input type="text" name="name" class="popup__input popup__input_type_name">
@@ -91,13 +91,14 @@
     </div>
   </div>
   <!---  Popup add  --->
-  <div class="popup popup_add_card">
+  <div id="add-card" class="popup popup_add_card">
     <div class="popup__container">
-      <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+      <button id="close-add-form" class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="card_information">
-        <input class="popup__input popup__input_place" id="place-input" type="text" name="место" placeholder="Название" >
-        <input class="popup__input popup__input_link" id="link-input" type="url" name="картинка" placeholder="Ссылка на картинку">
+        <input class="popup__input popup__input_place" id="place-input" type="text" name="name" placeholder="Название" >
+        <input class="popup__input popup__input_link" id="link-input" type="url" name="link" placeholder="Ссылка на картинку">
+        <input class="popup__submit" type="submit" value="Сохранить">
       </form>
     </div>
   </div>
