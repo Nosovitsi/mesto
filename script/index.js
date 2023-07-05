@@ -55,19 +55,6 @@ function popupCloseAddBtn() {
     addCard.classList.remove('popup_opened');
 }
 
-
-editBtnProfile.addEventListener('click', popupOpenEditBtn);
-addFormCloseButton.addEventListener('click', () => {
-    addCard.classList.remove('popup_opened');
-});
-editFormCloseButton.addEventListener('click', () => {
-    editCard.classList.remove('popup_opened');
-});
-viewCardCloseBtn.addEventListener('click', () => {
-  viewCard.classList.remove('popup_opened');
-}
-  )
-
 /*Profile add image*/
 profileAddButton.addEventListener('click', popupOpenAddBtn);
 
@@ -109,8 +96,20 @@ addCard.addEventListener('submit', function (evt) {
     popupCloseAddBtn();
 })
 
-document.body.addEventListener('keydown', evt => {
+document.body.addEventListener('keydown', function (evt) {
   if (evt.keyCode === 27) {
     closePopup()
   }
 })
+
+editBtnProfile.addEventListener('click', popupOpenEditBtn);
+addFormCloseButton.addEventListener('click', () => {
+  addCard.classList.remove('popup_opened');
+});
+editFormCloseButton.addEventListener('click', () => {
+  editCard.classList.remove('popup_opened');
+});
+viewCardCloseButton.addEventListener('click', () => {
+  viewCard.classList.remove('popup_opened');
+}
+)
