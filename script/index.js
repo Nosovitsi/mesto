@@ -109,7 +109,7 @@ addFormCloseButton.addEventListener('click', () => {
 editFormCloseButton.addEventListener('click', () => {
   editCard.classList.remove('popup_opened');
 });
-viewCardCloseButton.addEventListener('click', () => {
+viewCardCloseBtn.addEventListener('click', () => {
   viewCard.classList.remove('popup_opened');
 }
 )
