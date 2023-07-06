@@ -25,51 +25,6 @@
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
-    <!---  Cards  --->
-    <!-- <section class="cards">
-      <div class="cards__item">
-        <img src="./images/castle.jpg" alt="Карачаевск" class="cards__image">
-        <div class="cards__name">
-            <h2 class="cards__description">Карачаевск</h2>
-            <button class="cards__like" type="button"></button>
-        </div>
-      </div>
-      <div class="cards__item">
-        <img src="./images/mountain.jpg" alt="Гора Эльбрус" class="cards__image">
-        <div class="cards__name">
-            <h2 class="cards__description">Гора Эльбрус</h2>
-            <button class="cards__like" type="button"></button>
-        </div>
-      </div>
-      <div class="cards__item">
-        <img src="./images/Dombai.jpg" alt="Домбай" class="cards__image">
-        <div class="cards__name">
-            <h2 class="cards__description">Домбай</h2>
-            <button class="cards__like" type="button"></button>
-        </div>
-      </div>
-      <div class="cards__item">
-        <img src="./images/Dombai.jpg" alt="Домбай" class="cards__image">
-        <div class="cards__name">
-            <h2 class="cards__description">Домбай</h2>
-            <button class="cards__like" type="button"></button>
-        </div>
-      </div>
-       <div class="cards__item">
-        <img src="./images/castle.jpg" alt="Карачаевск" class="cards__image">
-        <div class="cards__name">
-            <h2 class="cards__description">Карачаевск</h2>
-            <button class="cards__like" type="button"></button>
-        </div>
-      </div>
-       <div class="cards__item">
-        <img src="./images/mountain.jpg" alt="Гора Эльбрус" class="cards__image">
-        <div class="cards__name">
-            <h2 class="cards__description">Гора Эльбрус</h2>
-            <button class="cards__like" type="button"></button>
-        </div>
-      </div>
-    </section> -->
     <section class="cards">
     </section>
   </main>
@@ -79,21 +34,21 @@
   </footer>
   <!---  Popup  --->
   <!---  Popup edit  --->
-  <div id="edit-card" class="popup popup_edit">
+  <div id="edit-card" class="popup popup_edit popup_edit-card">
     <div class="popup__container">
-      <button id="close-edit-form" class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+      <button  class="popup__close-button close-edit-form" type="button" aria-label="Закрыть форму"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="profile_information">
-        <input type="text" name="name" class="popup__input popup__input_type_name">
-        <input type="text" name="about" class="popup__input popup__input_type_job">
+      <form class="popup__form popup__edit-form" name="profile_information">
+        <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя">
+        <input type="text" name="about" class="popup__input popup__input_type_job" placeholder="О себе">
         <input type="submit" class="popup__submit" value="Сохранить">
       </form>
     </div>
   </div>
   <!---  Popup add  --->
-  <div id="add-card" class="popup popup_add_card">
+  <div class="popup popup_add_card">
     <div class="popup__container">
-      <button id="close-add-form" class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+      <button class="popup__close-button close-add-form" type="button" aria-label="Закрыть форму"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="card_information">
         <input class="popup__input popup__input_name" id="place-input" type="text" name="name" placeholder="Название" >

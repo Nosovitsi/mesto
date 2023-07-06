@@ -1,7 +1,6 @@
-import {initialCards} from "./cards.js"; 
+import { initialCards } from "./cards.js";
 
 const popup = document.querySelector('.popup_edit');
-const popupAddBtn = document.querySelector('.popup_add_card');
 const editBtnProfile = document.querySelector('.profile__edit-button');
 
 const addFormCloseButton = document.querySelector('.close-add-form');
@@ -39,65 +38,65 @@ function closePopup() {
 /* Edit Btn */
 
 function popupOpenEditBtn() {
-    nameInput.value = nameValue.textContent;
-    jobInput.value = jobValue.textContent;
-    openPopup(popup);
+  nameInput.value = nameValue.textContent;
+  jobInput.value = jobValue.textContent;
+  openPopup(popup);
 }
 
-function profilePopupFormSubmit(evt) {
-    evt.preventDefault();
-    nameValue.textContent = nameInput.value;
-    jobValue.textContent = jobInput.value;
-    closePopup();
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  nameValue.textContent = nameInput.value;
+  jobValue.textContent = jobInput.value;
+  closePopup();
 }
 
 /* Add Btn */
 function popupOpenAddBtn(e) {
-    console.log(e)
-  openPopup(popupAddBtn);
+  console.log(e)
+  openPopup(popup);
 }
+
 
 /*Profile add image*/
 profileAddButton.addEventListener('click', popupOpenAddBtn);
 
-popupForm.addEventListener('submit', profilePopupFormSubmit);
-
+popupForm.addEventListener('submit', handleFormSubmit);
 
 
 function renderCard(card) {
-  viewCard.querySelector('.popup__view-image').src = card.link;
-  viewCard.querySelector('.popup__view-image').alt = card.name;
-  viewCard.querySelector('.popup__description').textContent = card.name;
-    const temp = document.getElementsByTagName("template")[0];
-    const clone = temp.content.cloneNode(true);
-    const img = clone.querySelector('.card__image');
-    img.src = card.link;
-    img.alt = card.name;
-    img.addEventListener( 'click', function(evt){
-      openPopup(viewCard);
-    } )
-    clone.querySelector('.card__description').textContent = card.name;
-    clone.querySelector('.card__like').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('card__like_active')
-    });
-    clone.querySelector('.card__delete').addEventListener('click', function (evt) {
-        const card = evt.target.closest('.card');
-        cards.removeChild(card)
-    });
-    cards.prepend(clone); /* Прошу прощения, но не могли бы вы подробнее объяснить, где она должна размещаться, я не понял ошибки */
+  const temp = document.getElementsByTagName("template")[0];
+  const clone = temp.content.cloneNode(true);
+  const img = clone.querySelector('.card__image');
+  img.src = card.link;
+  img.alt = card.name;
+  img.addEventListener('click', function (evt) {
+    viewCard.querySelector('.popup__view-image').src = card.link;
+    viewCard.querySelector('.popup__view-image').alt = card.name;
+    viewCard.querySelector('.popup__description').textContent = card.name;
+    openPopup(viewCard);
+  })
+  clone.querySelector('.card__description').textContent = card.name;
+  clone.querySelector('.card__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like_active')
+  });
+  clone.querySelector('.card__delete').addEventListener('click', function (evt) {
+    const card = evt.target.closest('.card');
+    cards.removeChild(card)
+  });
+  cards.prepend(clone);
 }
 
 function render() {
-    initialCards.forEach((card) => {
-        renderCard(card)
-    })
+  initialCards.forEach((card) => {
+    renderCard(card)
+  })
 }
 render();
 
 addCard.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    const formData =  {name: placeInput.value, link: linkInput.value};
-    renderCard(formData);
+  evt.preventDefault();
+  const formData = { name: placeInput.value, link: linkInput.value };
+  renderCard(formData);
   closePopup()
 })
 
