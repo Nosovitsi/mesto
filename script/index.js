@@ -64,41 +64,46 @@ popupForm.addEventListener('submit', profilePopupFormSubmit);
 
 
 
+function createCardElement(card) {
+  const temp = document.getElementsByTagName("template")[0];
+  const clone = temp.content.cloneNode(true);
+  const img = clone.querySelector('.card__image');
+  img.src = card.link;
+  img.addEventListener('click', function (evt) {
+    viewCard.querySelector('.popup__view-image').src = card.link;
+    viewCard.querySelector('.popup__description').textContent = card.name;
+    viewCard.classList.add('popup_opened');
+  })
+  clone.querySelector('.card__description').textContent = card.name;
+  clone.querySelector('.card__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like_active')
+  });
+  clone.querySelector('.card__delete').addEventListener('click', function (evt) {
+    const card = evt.target.closest('.card');
+    cards.removeChild(card)
+  });
+
+  return clone;
+}
 function renderCard(card) {
-  viewCard.querySelector('.popup__view-image').src = card.link;
-  viewCard.querySelector('.popup__view-image').alt = card.name;
-  viewCard.querySelector('.popup__description').textContent = card.name;
-    const temp = document.getElementsByTagName("template")[0];
-    const clone = temp.content.cloneNode(true);
-    const img = clone.querySelector('.card__image');
-    img.src = card.link;
-    img.alt = card.name;
-    img.addEventListener( 'click', function(evt){
-      openPopup(viewCard);
-    } )
-    clone.querySelector('.card__description').textContent = card.name;
-    clone.querySelector('.card__like').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('card__like_active')
-    });
-    clone.querySelector('.card__delete').addEventListener('click', function (evt) {
-        const card = evt.target.closest('.card');
-        cards.removeChild(card)
-    });
-    cards.prepend(clone); /* Прошу прощения, но не могли бы вы подробнее объяснить, где она должна размещаться, я не понял ошибки */
+  const element = createCardElement(card);
+  cards.prepend(element);
 }
 
 function render() {
-    initialCards.forEach((card) => {
-        renderCard(card)
-    })
+  initialCards.forEach((card) => {
+    renderCard(card)
+  })
 }
 render();
 
-addCard.addEventListener('submit', function (evt) {
+addCard.querySelector('form').addEventListener('submit', function (evt) {
     evt.preventDefault();
     const formData =  {name: placeInput.value, link: linkInput.value};
     renderCard(formData);
   closePopup()
+  placeInput.value = '';
+  linkInput.value = '';
 })
 
 document.body.addEventListener('keydown', function (evt) {
@@ -117,3 +122,4 @@ editFormCloseButton.addEventListener('click', () => {
 viewCardCloseBtn.addEventListener('click', () => {
   closePopup()
 });
+
