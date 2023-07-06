@@ -19,10 +19,8 @@ const linkInput = document.querySelector('#link-input');
 
 const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('.popup_add_card');
-const editCard = document.querySelector('.popup_edit-card');
 
-const cards = document.querySelector('.cards')
-const template = document.querySelector('.template')
+const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
 
@@ -31,9 +29,16 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
+// function closePopup() {
+//   const openedPopup = document.querySelector('.popup_opened');
+//   openedPopup.classList.remove('popup_opened');
+// }
+
 function closePopup() {
   const openedPopup = document.querySelector('.popup_opened');
-  openedPopup.classList.remove('popup_opened');
+  if (openedPopup) {
+    openedPopup.classList.remove('popup_opened');
+  }
 }
 
 /* Edit Btn */
