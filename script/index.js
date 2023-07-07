@@ -20,10 +20,11 @@ const linkInput = document.querySelector('#link-input');
 const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('.popup_add_card');
 
+const addCardForm = document.querySelector('.popup__add-form');
 const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
-const test = addCard.querySelector('form');
+
 
 function openPopup(popupEditProfile) {
   popupEditProfile.classList.add('popup_opened');
@@ -105,7 +106,7 @@ function render() {
 render();
 
 /* addCard.querySelector('form').addEventListener('submit', function (evt) */
-test.addEventListener('submit', function (evt) {
+addCardForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     const formData =  {name: placeInput.value, link: linkInput.value};
     renderCard(formData);
