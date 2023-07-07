@@ -25,11 +25,12 @@ const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
 
-document.body.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    closePopup()
+function clickOnEsc(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.keyCode === 27) {
+    closePopup(popupOpened);
   }
-})
+};
 
 function clickOnOverlay(evt) {
   if (evt.target.classList.contains('popup')) {
@@ -41,6 +42,7 @@ function clickOnOverlay(evt) {
 function openPopup(popupEditProfile) {
   popupEditProfile.classList.add('popup_opened');
   document.addEventListener('click', clickOnOverlay);
+  document.addEventListener('keydown', clickOnEsc);
 }
 
 // function closePopup() {
@@ -53,6 +55,7 @@ function closePopup() {
   if (openedPopup) {
     openedPopup.classList.remove('popup_opened');
     document.removeEventListener('click', clickOnOverlay);
+    document.addEventListener('keydown', clickOnEsc);
   }
 }
 
