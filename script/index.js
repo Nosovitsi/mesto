@@ -1,7 +1,7 @@
 import {initialCards} from "./cards.js"; 
 
 const popupEditProfile = document.querySelector('.popup_edit');
-const popupAddBtn = document.querySelector('.popup_add_card');
+
 const editBtnProfile = document.querySelector('.profile__edit-button');
 
 const addFormCloseButton = document.querySelector('.close-add-form');
@@ -59,7 +59,7 @@ function profilePopupFormSubmit(evt) {
 /* Add Btn */
 function popupOpenAddBtn(e) {
     console.log(e)
-  openPopup(popupAddBtn);
+  openPopup(addCard);
 }
 
 /*Profile add image*/
