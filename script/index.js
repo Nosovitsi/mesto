@@ -10,17 +10,17 @@ const editFormCloseButton = document.querySelector('.close-edit-form');
 const popupEditForm = document.querySelector('.popup__edit-form');
 const nameValue = document.querySelector('.profile__name');
 const jobValue = document.querySelector('.profile__job');
-
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
-const placeInput = document.querySelector('#place-input');
-const linkInput = document.querySelector('#link-input');
+
 
 const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('.popup_add_card');
+const popupAddForm = document.querySelector('.popup__add-form');
+const placeInput = document.querySelector('#place-input');
+const linkInput = document.querySelector('#link-input');
 
-const addCardForm = document.querySelector('.popup__add-form');
 const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
@@ -106,7 +106,7 @@ function render() {
 render();
 
 /* addCard.querySelector('form').addEventListener('submit', function (evt) */
-addCardForm.addEventListener('submit', function (evt) {
+popupAddForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     const formData =  {name: placeInput.value, link: linkInput.value};
     renderCard(formData);
