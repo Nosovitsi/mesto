@@ -15,3 +15,63 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.classList.remove('popup__input-error_active');
   errorElement.textContent = '';
 };
+
+/* Check validity */
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+/* Set listeners */
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonElement = formElement.querySelector('.popup__submit')
+  toggleButtonState(inputList, buttonElement)
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement)
+    });
+  });
+};
+
+/* Enable validation */
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault()
+    });
+    setEventListener(formElement);
+  });
+}
+
+enableValidation();
+
+/* Invalid input */
+
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+}
+
+/* Invalid input */
+
+function toggleButtonState(inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) { 
+    buttonElement.classList.add('button_inactive') 
+  }
+  else { 
+    buttonElement.classList.remove('button_inactive') 
+  }
+}
+
+
+
