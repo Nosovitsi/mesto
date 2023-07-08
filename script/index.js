@@ -34,7 +34,7 @@ function clickOnEsc(evt) {
 
 function clickOnOverlay(evt) {
   if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
+    closePopup();
   }
 };
 
