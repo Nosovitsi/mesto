@@ -13,8 +13,6 @@ const jobValue = document.querySelector('.profile__job');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
-
-
 const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('.popup_add_card');
 const popupAddForm = document.querySelector('.popup__add-form');
@@ -25,10 +23,12 @@ const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
 
+
+/* Close functions */
+
 function clickOnEsc(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.keyCode === 27) {
-    closePopup(popupOpened);
+    closePopup();
   }
 };
 
@@ -37,7 +37,6 @@ function clickOnOverlay(evt) {
     closePopup(evt.target);
   }
 };
-
 
 function openPopup(popupEditProfile) {
   popupEditProfile.classList.add('popup_opened');
@@ -55,7 +54,7 @@ function closePopup() {
   if (openedPopup) {
     openedPopup.classList.remove('popup_opened');
     document.removeEventListener('click', clickOnOverlay);
-    document.addEventListener('keydown', clickOnEsc);
+    document.removeEventListener('keydown', clickOnEsc);
   }
 }
 
