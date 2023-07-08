@@ -41,9 +41,8 @@ const setEventListeners = (formElement) => {
 };
 
 /* Enable validation */
-
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+const formList = Array.from(document.querySelectorAll('.popup__form'));
+function enableValidation(formList) {
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault()
@@ -52,7 +51,7 @@ function enableValidation() {
   });
 }
 
-enableValidation();
+enableValidation(formList);
 
 /* Invalid input */
 
