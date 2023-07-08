@@ -1,17 +1,17 @@
 .popup__container {
-  width: 358px; /* ширина с учетом паддингов */
+  color: #000;
+  background-color: #fff;
+  width: 430px;
   border-radius: 10px;
-  background: #FFF;
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
-  margin: 0 auto;
-  padding: 35px 36px 0;
+  box-sizing: border-box;
+  padding: 35px 0 37px;
   position: relative;
+  z-index: 1;
 }
 
-@media (max-width:540px) {
+@media (max-width:425px) {
   .popup__container {
+    padding: 25px 0;
     width: 282px;
-    padding: 25px 0 0;
   }
 }
-

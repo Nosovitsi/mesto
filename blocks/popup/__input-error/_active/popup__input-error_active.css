@@ -1,4 +1,18 @@
-.popup__input-error_active{
-  display: flex;
-  visibility: visible;
-}
+  .popup__input-error_active {
+    margin: 0;
+    color: #F00;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.21;
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    max-width: fit-content;
+    width: 358px;
+  }
+
+  @media (max-width:540px) {
+    .popup__input-error_active {
+      width: 238px;
+    }
+  }
+
