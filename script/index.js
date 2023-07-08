@@ -16,8 +16,8 @@ const jobInput = document.querySelector('.popup__input_type_job');
 const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('.popup_add_card');
 const popupAddForm = document.querySelector('.popup__add-form');
-const placeInput = document.querySelector('#place-input');
-const linkInput = document.querySelector('#link-input');
+const placeInput = document.querySelector('#input-place');
+const linkInput = document.querySelector('#input-link');
 
 const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
@@ -121,7 +121,6 @@ function render() {
 }
 render();
 
-/* addCard.querySelector('form').addEventListener('submit', function (evt) */
 popupAddForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     const formData =  {name: placeInput.value, link: linkInput.value};
