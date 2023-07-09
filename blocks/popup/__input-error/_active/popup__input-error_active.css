@@ -8,6 +8,8 @@
     font-family: 'Inter', 'Arial', 'sans-serif';
     max-width: fit-content;
     width: 358px;
+    height: 36px;
+    display: block;
   }
 
   @media (max-width:540px) {
