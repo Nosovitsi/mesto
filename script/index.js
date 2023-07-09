@@ -23,7 +23,7 @@ const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
 
-
+const popupAddSubmitBtn = document.querySelector(".popup__submit__add-button");
 /* Close functions */
 
 function clickOnEsc(evt) {
@@ -75,7 +75,6 @@ function profilePopupFormSubmit(evt) {
 
 /* Add Btn */
 function popupOpenAddBtn(e) {
-    console.log(e)
   openPopup(addCard);
 }
 
@@ -128,6 +127,9 @@ popupAddForm.addEventListener('submit', function (evt) {
   closePopup()
   placeInput.value = '';
   linkInput.value = '';
+  popupAddSubmitBtn.disabled = true;
+  popupAddSubmitBtn.classList.add("popup__submit_inactive");
+
 })
 
 editBtnProfile.addEventListener('click', popupOpenEditBtn);
