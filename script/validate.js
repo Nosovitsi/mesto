@@ -2,11 +2,13 @@
 function showError(inputElement, errorElement, config) {
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
+  errorElement.classList.add(config.spanErrorClass);
 }
 
 function hideError(inputElement, errorElement, config) {
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
+  errorElement.classList.remove(config.spanErrorClass);
 }
 
 function chekInputValidity(inputElement, formElement, config) {
@@ -81,6 +83,7 @@ const config = {
   submitButtonSelector: ".popup__submit",
   inactiveButtonClass: "popup__submit_inactive",
   inputErrorClass: "popup__input_type_error",
+  spanErrorClass: "popup__input-error_active",
 };
 
 enableValidation(config);
