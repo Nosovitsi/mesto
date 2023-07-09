@@ -10,14 +10,14 @@ const editFormCloseButton = document.querySelector('.close-edit-form');
 const popupEditForm = document.querySelector('.popup__edit-form');
 const nameValue = document.querySelector('.profile__name');
 const jobValue = document.querySelector('.profile__job');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
+const nameInput = document.querySelector('.popup__input_name');
+const jobInput = document.querySelector('.popup__input_job');
 
 const profileAddButton = document.querySelector('.profile__add-button');
 const addCard = document.querySelector('.popup_add_card');
 const popupAddForm = document.querySelector('.popup__add-form');
-const placeInput = document.querySelector('#input-place');
-const linkInput = document.querySelector('#input-link');
+const placeInput = document.querySelector('.popup__input_place');
+const linkInput = document.querySelector('.popup__input_link');
 
 const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");

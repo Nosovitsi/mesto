@@ -14,10 +14,7 @@ function chekInputValidity(inputElement, formElement, config) {
   inputElement.setCustomValidity("");
 
   const isInputValid = inputElement.validity.valid;
-  // toDo:update logic from id to name
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-
+  const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
 
   if (!isInputValid) {
     showError(inputElement, errorElement, config);
