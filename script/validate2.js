@@ -11,7 +11,7 @@ function hideError(inputElement, errorElement) {
 
 function checkInputValidity(inputElement) {
   const isInputValid = inputElement.validity.valid;
-  const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
   if(!isInputValid) {
     showError(inputElement, errorElement);
   }  else {
@@ -41,7 +41,7 @@ function setEventListener(formElement){
   const inputList = formElement.querySelectorAll(".popup__input");
   const submitButtonElement = formElement.querySelector(".popup__submit");
 
-toggleButtonState(submitButtonElement,formElement.checkInputValidity()); 
+  toggleButtonState(submitButtonElement,formElement.checkInputValidity()); 
   // toggleButtonState(submitButtonElement, isActive); 
   [...inputList].forEach(function(inputElement){
     inputElement.addEventListener('input', function (){
@@ -61,11 +61,11 @@ toggleButtonState(submitButtonElement,formElement.checkInputValidity());
 
 
 function enableValidation() {
-  const formsList = document.querySelectorAll('.popup__form');
+  const formsList = document.querySelectorAll(".popup__form");
  
   [...formsList].forEach(function (formElement){
 setEventListener(formElement);
-  })
+  });
 }
 
 enableValidation();
