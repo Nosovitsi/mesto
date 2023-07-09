@@ -24,6 +24,8 @@ const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
 
 const popupAddSubmitBtn = document.querySelector(".popup__submit__add-button");
+
+const inputEvent = new Event("input");
 /* Close functions */
 
 function clickOnEsc(evt) {
@@ -63,6 +65,8 @@ function closePopup() {
 function popupOpenEditBtn() {
     nameInput.value = nameValue.textContent;
     jobInput.value = jobValue.textContent;
+  nameInput.dispatchEvent(inputEvent);
+  jobInput.dispatchEvent(inputEvent);
   openPopup(popupEditProfile);
 }
 
