@@ -1,8 +1,9 @@
 
 function checkInputValidity(inputElement) {
   const isInputValid = inputElement.validity.valid;
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   if(!isInputValid) {
-    inputElement.classList.add('popup__input_type_error');
+    inputElement.classList.add("popup__input_type_error");
   }
 }
 
