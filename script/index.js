@@ -23,7 +23,7 @@ const cards = document.querySelector('.cards');
 const viewCard = document.querySelector("#view-card");
 const viewCardCloseBtn = document.querySelector("#close-card");
 
-const popupAddSubmitBtn = document.querySelector(".popup_add_button");
+const popupAddSubmitBtn = document.querySelector(".popup__button");
 
 const inputEvent = new Event("input");
 /* Close functions */
