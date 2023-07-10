@@ -64,7 +64,7 @@ function setEventListener(formElement, config) {
   formElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
     if (!formElement.checkValidity()) return;
-
+    disabledButton(submitButtonElement, config);  /*  */
     console.log("Форма отправлена!");
   });
 }

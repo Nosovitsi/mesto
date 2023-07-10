@@ -131,9 +131,8 @@ popupAddForm.addEventListener('submit', function (evt) {
   closePopup()
   placeInput.value = '';
   linkInput.value = '';
-  popupAddSubmitBtn.disabled = true;
-  popupAddSubmitBtn.classList.add("popup__submit_inactive");
-
+  // popupAddSubmitBtn.disabled = true;
+  // popupAddSubmitBtn.classList.add("popup__submit_inactive");
 })
 
 editBtnProfile.addEventListener('click', popupOpenEditBtn);
