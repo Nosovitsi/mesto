@@ -1,4 +1,5 @@
-import {initialCards} from "./cards.js"; 
+import {initialCards} from "./cards.js";
+import {Card} from "./card.js"; 
 
 const popupEditProfile = document.querySelector('.popup_edit');
 
@@ -90,27 +91,29 @@ popupEditForm.addEventListener('submit', profilePopupFormSubmit);
 
 
 function createCardElement(card) {
-  const temp = document.getElementsByTagName("template")[0];
-  const clone = temp.content.cloneNode(true);
-  const img = clone.querySelector('.card__image');
-  img.src = card.link;
-  img.alt = card.name;
-  img.addEventListener('click', function (evt) {
-    viewCard.querySelector('.popup__view-image').src = card.link;
-    viewCard.querySelector('.popup__view-image').alt = card.name;
-    viewCard.querySelector('.popup__description').textContent = card.name;
-    openPopup(viewCard);
-  })
-  clone.querySelector('.card__description').textContent = card.name;
-  clone.querySelector('.card__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__like_active')
-  });
-  clone.querySelector('.card__delete').addEventListener('click', function (evt) {
-    const card = evt.target.closest('.card');
-    cards.removeChild(card)
-  });
+//   const temp = document.getElementsByTagName("template")[0];
+//   const clone = temp.content.cloneNode(true);
+//   const img = clone.querySelector('.card__image');
+//   img.src = card.link;
+//   img.alt = card.name;
+//   img.addEventListener('click', function (evt) {
+//     viewCard.querySelector('.popup__view-image').src = card.link;
+//     viewCard.querySelector('.popup__view-image').alt = card.name;
+//     viewCard.querySelector('.popup__description').textContent = card.name;
+//     openPopup(viewCard);
+//   })
+//   clone.querySelector('.card__description').textContent = card.name;
+//   clone.querySelector('.card__like').addEventListener('click', function (evt) {
+//     evt.target.classList.toggle('card__like_active')
+//   });
+//   clone.querySelector('.card__delete').addEventListener('click', function (evt) {
+//     const card = evt.target.closest('.card');
+//     cards.removeChild(card)
+//   });
 
-  return clone;
+//   return clone;
+return new Card('.template', card).generateCard();
+
 }
 function renderCard(card) {
   const element = createCardElement(card);
