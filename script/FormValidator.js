@@ -1,22 +1,24 @@
 export class FormValidator{
 
-  constructor(config, inputElement, inputError, errorElement, formElement) {
+  constructor(config, formElement) {
   this._config = config;
   this._inputElement  = config.inputElement;
   this._inputError = config.inputError;
   this._errorElement = config.errorElement;
-  this._formElemnt = config.formElement;
- 
+  this._formElement = formElement;
+  this._inputList = formElement.querySelectorAll(config.inputSelector);
+  this._buttonElement  = config.buttonElement;
+  this._submitButtonElement = formElement.querySelector(config.submitButtonSelector);
 }
 
   // Блокировка кнопки
-  _disabledButton() {
+  disabledButton() {
     this._buttonElement.disabled = 'disabled';
     this._buttonElement.classList.add(this._inActiveButtonClass);
   }
 
   // Разблокировка кнопки
-  _enabledButton() {
+  enabledButton() {
     this._buttonElement.disabled = false;
     this._buttonElement.classList.remove(this._inActiveButtonClass);
   }
@@ -49,7 +51,7 @@ export class FormValidator{
   }
 
   // Проверка инпута на валидность
-    _chekInputValidity(inputElement, formElement, config) {
+    _chekInputValidity(inputElement) {
       inputElement.setCustomValidity("");
 
       const isInputValid = inputElement.validity.valid;
@@ -64,12 +66,8 @@ export class FormValidator{
 
   // Установка слушателя
   _setEventListener(formElement, config) {
-    const inputList = formElement.querySelectorAll(config.inputSelector);
-    const submitButtonElement = formElement.querySelector(
-      config.submitButtonSelector
-    );
-
-    this._toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
+    
+    this._toggleButtonState();
 
     this._inputList.forEach(function (inputElement) {
       inputElement.addEventListener("input", function () {
@@ -81,8 +79,9 @@ export class FormValidator{
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       if (!this._formElement.checkValidity()) return;
-      disabledButton(submitButtonElement, config);  /*  */
-      console.log("Форма отправлена!");
+      this.disabledButton();
     });
   }
 }
+
+
