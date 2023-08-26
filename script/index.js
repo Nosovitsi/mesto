@@ -36,12 +36,7 @@ let inputElement = placeInput;
 
 
 
-//Передавайте в конструктор конфиг и элемент конкретной формы.
-const profileFormValidator = new FormValidator(formsConfig, profileForm);
-const placeFormValidator = new FormValidator(formsConfig, placeForm);
-//Здесь мы запукаем валидацию для каждой формы отдельно.
-profileFormValidator.enableValidation();
-placeFormValidator.enableValidation(); 
+
 
 /* Close functions */
 
