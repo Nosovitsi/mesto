@@ -2,22 +2,19 @@ export class FormValidator {
 
   constructor(config, formSelector) {
     this._config = config;
-    this._inputElements = Array.from(document.querySelectorAll(config.inputSelector));
-    this._submitButton = document.querySelector(config.submitButtonSelector);
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._spanErrorClass = config.spanErrorClass;
-    this._errorSelector = config.errorSelector;
 
 
     this._formElement = document.querySelector(formSelector);
-
-    this._setEventListener();
+    this._submitButton = this._formElement.querySelector(config.submitButtonSelector);
+    this._inputElements = Array.from(this._formElement.querySelectorAll(config.inputSelector));
   }
 
   // Блокировка кнопки
   disabledButton() {
-    this._submitButton.disabled = 'disabled';
+    this._submitButton.disabled = true;
     this._submitButton.classList.add(this._inactiveButtonClass);
   }
 
@@ -37,7 +34,9 @@ export class FormValidator {
   }
 
   _isActive() {
-    return this._inputElements.every(input => input.validity.valid);
+    return this._inputElements.every(input => {
+      return input.validity.valid
+    });
   }
 
   _isInputValid(input) {
@@ -47,7 +46,7 @@ export class FormValidator {
   // Объявление ошибки
   _showError(inputElement) {
     inputElement.classList.add(this._inputErrorClass);
-    const errorElement = inputElement.closest(this.errorSelector);
+    const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._spanErrorClass);
   }
@@ -55,7 +54,7 @@ export class FormValidator {
   // Сокрытие ошибки
   _hideError(inputElement) {
     inputElement.classList.remove(this._inputErrorClass);
-    const errorElement = inputElement.closest(this.errorSelector);
+    const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._spanErrorClass);
   }
@@ -72,28 +71,22 @@ export class FormValidator {
   }
 
   _inputHandler(e) {
-    this._toggleButtonState();
     this._checkInputValidity(e.target);
+    this._toggleButtonState();
   };
   // Установка слушателя
   _setEventListener() {
 
     this._toggleButtonState();
 
-
     const self = this;
     this._inputElements.forEach(function (inputElement) {
-      inputElement.addEventListener("input", function (e) {
-        this._inputHandler(e).bind(self);
-      }.bind(self));
-    });
-
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      if (!this._formElement.checkValidity()) return;
-      this.disabledButton();
+      inputElement.addEventListener("input", self._inputHandler.bind(self))
     });
   }
-}
 
+  enableValidation() {
+    this._setEventListener();
+  }
+}
 

@@ -1,6 +1,6 @@
-import {initialCards} from "./cards.js";
-import {Card} from "./card.js"; 
-import {FormValidator} from "./FormValidator.js"
+import { initialCards } from "./cards.js";
+import { Card } from "./card.js";
+import { FormValidator } from "./FormValidator.js"
 
 const popupEditProfile = document.querySelector('.popup_edit');
 
@@ -29,13 +29,19 @@ const popupAddSubmitBtn = document.querySelector(".popup__add-btn");
 
 const inputEvent = new Event("input");
 
-let formsConfig = {};
 let inputElement = placeInput;
 
-
-
-
-
+let profileConfig = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_inactive",
+  inputErrorClass: "popup__input_type_error",
+  spanErrorClass: "popup__input-error_active",
+};
+const profileForm = new FormValidator(profileConfig, '.popup__edit-form');
+profileForm.enableValidation();
+const addForm = new FormValidator(profileConfig, '.popup__add-form');
+addForm.enableValidation();
 
 
 /* Close functions */
@@ -70,18 +76,18 @@ function closePopup() {
 /* Edit Btn */
 
 function popupOpenEditBtn() {
-    nameInput.value = nameValue.textContent;
-    jobInput.value = jobValue.textContent;
+  nameInput.value = nameValue.textContent;
+  jobInput.value = jobValue.textContent;
   nameInput.dispatchEvent(inputEvent);
   jobInput.dispatchEvent(inputEvent);
   openPopup(popupEditProfile);
 }
 
 function profilePopupFormSubmit(evt) {
-    evt.preventDefault();
-    nameValue.textContent = nameInput.value;
-    jobValue.textContent = jobInput.value;
-    closePopup();
+  evt.preventDefault();
+  nameValue.textContent = nameInput.value;
+  jobValue.textContent = jobInput.value;
+  closePopup();
 }
 
 /* Add Btn */
@@ -97,7 +103,7 @@ popupEditForm.addEventListener('submit', profilePopupFormSubmit);
 
 
 function createCardElement(card) {
-return new Card('.template', card).generateCard();
+  return new Card('.template', card, '.popup_view').generateCard();
 }
 function renderCard(card) {
   const element = createCardElement(card);
@@ -112,9 +118,9 @@ function render() {
 render();
 
 popupAddForm.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    const formData =  {name: placeInput.value, link: linkInput.value};
-    renderCard(formData);
+  evt.preventDefault();
+  const formData = { name: placeInput.value, link: linkInput.value };
+  renderCard(formData);
   closePopup()
   placeInput.value = '';
   linkInput.value = '';
@@ -130,4 +136,3 @@ editFormCloseButton.addEventListener('click', () => {
 viewCardCloseBtn.addEventListener('click', () => {
   closePopup()
 });
-
