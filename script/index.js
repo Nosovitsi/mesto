@@ -58,8 +58,8 @@ function clickOnOverlay(evt) {
   }
 };
 
-function openPopup(popupEditProfile) {
-  popupEditProfile.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
   document.addEventListener('click', clickOnOverlay);
   document.addEventListener('keydown', clickOnEsc);
 }

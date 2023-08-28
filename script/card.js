@@ -41,11 +41,12 @@ export class Card {
 
   // функция окрытия изображения в большом окне //
   _image(evt) {
-    this._popup.classList.add('popup_opened');
+    // this._popup.classList.add('popup_opened');
     const image = this._popup.querySelector('.popup__view-image');
     image.src = this._card.link;
     image.alt = this._card.name;
     this._popup.querySelector('.popup__description').textContent = this._card.name;
+    
   }
   _setEventListeners() {
     this._element.querySelector('.card__like').addEventListener('click', this._like);
