@@ -1,6 +1,7 @@
 import { initialCards } from "./cards.js";
 import { Card } from "./card.js";
-import { FormValidator } from "./FormValidator.js"
+import { FormValidator } from "./FormValidator.js";
+import { closePopup } from "./test.js";
 
 const popupEditProfile = document.querySelector('.popup_edit');
 
@@ -42,36 +43,6 @@ const profileForm = new FormValidator(profileConfig, '.popup__edit-form');
 profileForm.enableValidation();
 const addForm = new FormValidator(profileConfig, '.popup__add-form');
 addForm.enableValidation();
-
-
-/* Close functions */
-
-function clickOnEsc(evt) {
-  if (evt.keyCode === 27) {
-    closePopup();
-  }
-};
-
-function clickOnOverlay(evt) {
-  if (evt.target.classList.contains('popup')) {
-    closePopup();
-  }
-};
-
-function openPopup(popupEditProfile) {
-  popupEditProfile.classList.add('popup_opened');
-  document.addEventListener('click', clickOnOverlay);
-  document.addEventListener('keydown', clickOnEsc);
-}
-
-function closePopup() {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (openedPopup) {
-    openedPopup.classList.remove('popup_opened');
-    document.removeEventListener('click', clickOnOverlay);
-    document.removeEventListener('keydown', clickOnEsc);
-  }
-}
 
 /* Edit Btn */
 
@@ -137,3 +108,4 @@ viewCardCloseBtn.addEventListener('click', () => {
   closePopup()
 });
 
+// someTest();
