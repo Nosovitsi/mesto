@@ -2,6 +2,7 @@ import { initialCards } from "./cards.js";
 import { Card } from "./card.js";
 import { FormValidator } from "./FormValidator.js";
 import { closePopup } from "./test.js";
+import { openPopup } from "./test.js";
 
 const popupEditProfile = document.querySelector('.popup_edit');
 
