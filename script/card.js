@@ -1,4 +1,4 @@
-import { someTest, openPopup } from "./test.js"
+import { someTest, openPopup } from "./popup.js"
 
 export class Card {
 
