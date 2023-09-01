@@ -2,10 +2,11 @@ import { someTest, openPopup } from "../popup.js"
 
 export class Card {
 
-  constructor(template, card, popup) {
+  constructor(template, card, popup, handleCardClick) {
     this._template = template;
     this._card = card;
     this._popup = document.querySelector(popup);
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -48,7 +49,8 @@ export class Card {
     image.src = this._card.link;
     image.alt = this._card.name;
     this._popup.querySelector('.popup__description').textContent = this._card.name;
-    openPopup(this._popup);
+    // openPopup(this._popup);
+    this._handleCardClick(this._popup);
   }
   _setEventListeners() {
     this._element.querySelector('.card__like').addEventListener('click', this._like);

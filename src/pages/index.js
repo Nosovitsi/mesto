@@ -100,7 +100,7 @@ profileAddButton.addEventListener('click', popupOpenAddBtn);
 popupEditForm.addEventListener('submit', profilePopupFormSubmit);
 
 function createCardElement(card) {
-  return new Card('.template', card, '.popup_view').generateCard();
+  return new Card('.template', card, '.popup_view', openPopup ).generateCard();
 }
 
 function renderCard(card) {
