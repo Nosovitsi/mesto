@@ -15,9 +15,7 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        console.log("test");
         this._submitBtn.addEventListener("click", this._submitCallback);
-        this._submitBtnEdit.addEventListener("click", )
     }
 
     close() {

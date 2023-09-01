@@ -8,15 +8,25 @@ import { openPopup } from "../script/popup";
 import Section from "../script/components/Section";
 import PopupWithImage from "../script/components/PopupWithImage";
 import PopupWithForm from "../script/components/PopupWithForm";
-// import UserInfo from "../components/UserInfo";
+import UserInfo from "../script/components/UserInfo";
 import {
-  addCard, addFormCloseButton, cards, editBtnProfile, editFormCloseButton,
+  addCard,
+  addFormCloseButton,
+  cards,
+  editBtnProfile,
+  editFormCloseButton,
   jobInput,
-  jobValue, linkInput,
+  jobValue,
+  linkInput,
   nameInput,
-  nameValue, placeInput, popupAddForm, popupEditForm,
-  popupEditProfile, profileAddButton,
-  viewCard, viewCardCloseBtn
+  nameValue,
+  placeInput,
+  popupAddForm,
+  popupEditForm,
+  popupEditProfile,
+  profileAddButton,
+  viewCard,
+  viewCardCloseBtn,
 } from "../script/utils/variables";
 
 function renderer(item) {
@@ -29,13 +39,17 @@ const cardsSection = new Section(renderer, cards);
 cardsSection.renderItems(initialCards);
 
 /* Cоздание экземпляра класса UserInfo */
-// const profile = new UserInfo({
-//   profileName: ".profile__name",
-//   profileJob: ".profile__description",
-// });
+
+const profile = new UserInfo({
+  profileName: nameValue,
+  profileJob: jobValue,
+});
+
+
+console.log(`%c this i user info: ${JSON.stringify(profile.getUserInfo())}`, 'background: blue; color: white;');
 
 /* Создание экземпляра класса Popup */
-const popupEdit = new PopupWithForm(popupEditProfile, submitForm);
+const popupEdit = new PopupWithForm(popupEditProfile, submitFormProfile);
 const popupAdd = new PopupWithForm(addCard);
 const popupView = new PopupWithImage(viewCard);
 
@@ -45,7 +59,7 @@ popupView.setEventListeners();
 
 const inputEvent = new Event("input");
 
-let profileConfig = {
+const profileConfig = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit",
   inactiveButtonClass: "popup__submit_inactive",
@@ -113,8 +127,8 @@ function submitForm(evt) {
 
 function submitFormProfile(evt) {
   evt.preventDefault();
-  const formData = { name: nameInput.value, link: jobInput.value };
-  renderCard(formData);
+  nameValue.textContent = nameInput.value;
+  jobValue.textContent = jobInput.value;
   closePopup()
   nameInput.value = '';
   jobInput.value = '';
@@ -122,7 +136,7 @@ function submitFormProfile(evt) {
 
 popupAddForm.addEventListener('submit', submitForm);
 
-editBtnProfile.addEventListener('click', submitFormProfile);  //popupOpenEditBtn
+editBtnProfile.addEventListener('click', popupOpenEditBtn);
 
 addFormCloseButton.addEventListener('click', () => {
   closePopup()
