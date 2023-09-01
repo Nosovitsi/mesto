@@ -46,7 +46,7 @@ const profile = new UserInfo({
 });
 
 
-console.log(`%c this i user info: ${JSON.stringify(profile.getUserInfo())}`, 'background: blue; color: white;');
+
 
 /* Создание экземпляра класса Popup */
 const popupEdit = new PopupWithForm(popupEditProfile, submitFormProfile);
