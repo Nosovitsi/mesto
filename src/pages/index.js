@@ -8,7 +8,7 @@ import { openPopup } from "../script/popup";
 import Section from "../script/components/Section";
 import PopupWithImage from "../script/components/PopupWithImage";
 import PopupWithForm from "../script/components/PopupWithForm";
-import { UserInfo } from "../components/UserInfo";
+import UserInfo from "../components/UserInfo";
 import {
   addCard, addFormCloseButton, cards, editBtnProfile, editFormCloseButton,
   jobInput,
