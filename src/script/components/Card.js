@@ -6,7 +6,6 @@ export class Card {
     this._template = template;
     this._card = card;
     this._popup = document.querySelector(popup);
-    someTest();
   }
 
   _getTemplate() {

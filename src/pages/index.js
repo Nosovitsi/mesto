@@ -8,7 +8,7 @@ import { openPopup } from "../script/popup";
 import Section from "../script/components/Section";
 import PopupWithImage from "../script/components/PopupWithImage";
 import PopupWithForm from "../script/components/PopupWithForm";
-import UserInfo from "../components/UserInfo";
+// import UserInfo from "../components/UserInfo";
 import {
   addCard, addFormCloseButton, cards, editBtnProfile, editFormCloseButton,
   jobInput,
@@ -29,10 +29,10 @@ const cardsSection = new Section(renderer, cards);
 cardsSection.renderItems(initialCards);
 
 /* Cоздание экземпляра класса UserInfo */
-const profile = new UserInfo({
-  profileName: ".profile__name",
-  profileJob: ".profile__description",
-});
+// const profile = new UserInfo({
+//   profileName: ".profile__name",
+//   profileJob: ".profile__description",
+// });
 
 /* Создание экземпляра класса Popup */
 const popupEdit = new PopupWithForm(popupEditProfile, submitForm);
@@ -111,9 +111,18 @@ function submitForm(evt) {
   linkInput.value = '';
 }
 
+function submitFormProfile(evt) {
+  evt.preventDefault();
+  const formData = { name: nameInput.value, link: jobInput.value };
+  renderCard(formData);
+  closePopup()
+  nameInput.value = '';
+  jobInput.value = '';
+}
+
 popupAddForm.addEventListener('submit', submitForm);
 
-editBtnProfile.addEventListener('click', popupOpenEditBtn);
+editBtnProfile.addEventListener('click', submitFormProfile);  //popupOpenEditBtn
 
 addFormCloseButton.addEventListener('click', () => {
   closePopup()

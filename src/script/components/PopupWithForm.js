@@ -3,8 +3,8 @@ import Popup from "./Popup";
 export default class PopupWithForm extends Popup {
     constructor(popupSelector, submitCallback) {
         super();
-
-        this._form = document.querySelector(popupSelector);
+        this._popup = popupSelector;
+        this._form = popupSelector;
         this._submitBtn = document.querySelector(".popup__submit");
         this._submitCallback = submitCallback;
     }
@@ -15,11 +15,19 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
+        console.log("test");
         this._submitBtn.addEventListener("click", this._submitCallback);
+        this._submitBtnEdit.addEventListener("click", )
     }
 
     close() {
         super.close();
         this._form.reset();
     }
+
+    _editProfile(){
+
+    }
+
+
 }
