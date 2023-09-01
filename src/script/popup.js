@@ -13,13 +13,13 @@ export function openPopup(popupEditProfile) {
   if (evt.keyCode === 27) {
     closePopup();
   }
-};
+}
 
- function clickOnOverlay(evt) {
-  if (evt.target.classList.contains('popup')) {
-    closePopup();
-  }
-};
+function clickOnOverlay(evt) {
+    if (evt.target.classList.contains('popup')) {
+        closePopup();
+    }
+}
 
 export function closePopup() {
   const openedPopup = document.querySelector('.popup_opened');
@@ -28,5 +28,4 @@ export function closePopup() {
     document.removeEventListener('click', clickOnOverlay);
     document.removeEventListener('keydown', clickOnEsc);
   }
-
 }

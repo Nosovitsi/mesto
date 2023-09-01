@@ -1,37 +1,42 @@
-import { initialCards } from "./cards.js";
-import { Card } from "./card.js";
-import { FormValidator } from "./FormValidator.js";
-import { closePopup } from "./popup.js";
-import { openPopup } from "./popup.js";
+import './index.css';
 
-const popupEditProfile = document.querySelector('.popup_edit');
+import { initialCards } from "../script/utils/cards";
+import { Card } from "../script/components/Card";
+import { FormValidator } from "../script/components/FormValidator";
+import { closePopup } from "../script/popup";
+import { openPopup } from "../script/popup";
+import Section from "../script/components/Section";
+import PopupWithImage from "../script/components/PopupWithImage";
+import PopupWithForm from "../script/components/PopupWithForm";
+import {
+  addCard, addFormCloseButton, cards, editBtnProfile, editFormCloseButton,
+  jobInput,
+  jobValue, linkInput,
+  nameInput,
+  nameValue, placeInput, popupAddForm, popupEditForm,
+  popupEditProfile, profileAddButton,
+  viewCard, viewCardCloseBtn
+} from "../script/utils/variables";
 
-const editBtnProfile = document.querySelector('.profile__edit-button');
+function renderer(item) {
+  const card = createCardElement(item);
+  cardsSection.addItem(card);
+}
 
-const addFormCloseButton = document.querySelector('.close-add-form');
-const editFormCloseButton = document.querySelector('.close-edit-form');
+/* Создание экземпляра класса Section */
+const cardsSection = new Section(renderer, cards);
+cardsSection.renderItems(initialCards);
 
-const popupEditForm = document.querySelector('.popup__edit-form');
-const nameValue = document.querySelector('.profile__name');
-const jobValue = document.querySelector('.profile__job');
-const nameInput = document.querySelector('.popup__input_name');
-const jobInput = document.querySelector('.popup__input_job');
+/* Создание экземпляра класса Popup */
+const popupEdit = new PopupWithForm(popupEditProfile, submitForm);
+const popupAdd = new PopupWithForm(addCard);
+const popupView = new PopupWithImage(viewCard);
 
-const profileAddButton = document.querySelector('.profile__add-button');
-const addCard = document.querySelector('.popup_add_card');
-const popupAddForm = document.querySelector('.popup__add-form');
-const placeInput = document.querySelector('.popup__input_place');
-const linkInput = document.querySelector('.popup__input_link');
-
-const cards = document.querySelector('.cards');
-const viewCard = document.querySelector("#view-card");
-const viewCardCloseBtn = document.querySelector("#close-card");
-
-const popupAddSubmitBtn = document.querySelector(".popup__add-btn");
+popupEdit.setEventListeners();
+popupAdd.setEventListeners();
+popupView.setEventListeners();
 
 const inputEvent = new Event("input");
-
-let inputElement = placeInput;
 
 let profileConfig = {
   inputSelector: ".popup__input",
@@ -40,8 +45,10 @@ let profileConfig = {
   inputErrorClass: "popup__input_type_error",
   spanErrorClass: "popup__input-error_active",
 };
+
 const profileForm = new FormValidator(profileConfig, '.popup__edit-form');
 profileForm.enableValidation();
+
 const addForm = new FormValidator(profileConfig, '.popup__add-form');
 addForm.enableValidation();
 
@@ -63,20 +70,18 @@ function profilePopupFormSubmit(evt) {
 }
 
 /* Add Btn */
-function popupOpenAddBtn(e) {
+function popupOpenAddBtn() {
   openPopup(addCard);
 }
 
 /*Profile add image*/
 profileAddButton.addEventListener('click', popupOpenAddBtn);
-
 popupEditForm.addEventListener('submit', profilePopupFormSubmit);
-
-
 
 function createCardElement(card) {
   return new Card('.template', card, '.popup_view').generateCard();
 }
+
 function renderCard(card) {
   const element = createCardElement(card);
   cards.prepend(element);
@@ -87,26 +92,30 @@ function render() {
     renderCard(card)
   })
 }
+
 render();
 
-popupAddForm.addEventListener('submit', function (evt) {
+function submitForm(evt) {
   evt.preventDefault();
   const formData = { name: placeInput.value, link: linkInput.value };
   renderCard(formData);
   closePopup()
   placeInput.value = '';
   linkInput.value = '';
-})
+}
+
+popupAddForm.addEventListener('submit', submitForm);
 
 editBtnProfile.addEventListener('click', popupOpenEditBtn);
+
 addFormCloseButton.addEventListener('click', () => {
   closePopup()
 });
+
 editFormCloseButton.addEventListener('click', () => {
   closePopup()
 });
+
 viewCardCloseBtn.addEventListener('click', () => {
   closePopup()
 });
-
-// someTest();
