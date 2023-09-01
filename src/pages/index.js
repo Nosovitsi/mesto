@@ -8,6 +8,7 @@ import { openPopup } from "../script/popup";
 import Section from "../script/components/Section";
 import PopupWithImage from "../script/components/PopupWithImage";
 import PopupWithForm from "../script/components/PopupWithForm";
+import { UserInfo } from "../components/UserInfo";
 import {
   addCard, addFormCloseButton, cards, editBtnProfile, editFormCloseButton,
   jobInput,
@@ -26,6 +27,12 @@ function renderer(item) {
 /* Создание экземпляра класса Section */
 const cardsSection = new Section(renderer, cards);
 cardsSection.renderItems(initialCards);
+
+/* Cоздание экземпляра класса UserInfo */
+const profile = new UserInfo({
+  profileName: ".profile__name",
+  profileJob: ".profile__description",
+});
 
 /* Создание экземпляра класса Popup */
 const popupEdit = new PopupWithForm(popupEditProfile, submitForm);
