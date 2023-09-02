@@ -45,16 +45,13 @@ const profile = new UserInfo({
   profileJob: jobValue,
 });
 
-
-
-
 /* Создание экземпляра класса Popup */
 const popupEdit = new PopupWithForm(popupEditProfile, submitFormProfile);
-const popupAdd = new PopupWithForm(addCard);
+const popupAddCard = new PopupWithForm(addCard);
 const popupView = new PopupWithImage(viewCard);
 
 popupEdit.setEventListeners();
-popupAdd.setEventListeners();
+popupAddCard.setEventListeners();
 popupView.setEventListeners();
 
 const inputEvent = new Event("input");
@@ -67,11 +64,11 @@ const profileConfig = {
   spanErrorClass: "popup__input-error_active",
 };
 
-const profileForm = new FormValidator(profileConfig, '.popup__edit-form');
-profileForm.enableValidation();
+const validatorEditProfile = new FormValidator(profileConfig, '.popup__edit-form');
+validatorEditProfile.enableValidation();
 
-const addForm = new FormValidator(profileConfig, '.popup__add-form');
-addForm.enableValidation();
+const validatorAddCard = new FormValidator(profileConfig, '.popup__add-form');
+validatorAddCard.enableValidation();
 
 /* Edit Btn */
 
@@ -116,7 +113,7 @@ function render() {
 
 // render();
 
-function submitForm(evt) {
+function submitAddCardForm(evt) {
   evt.preventDefault();
   const formData = { name: placeInput.value, link: linkInput.value };
   renderCard(formData);
@@ -134,7 +131,7 @@ function submitFormProfile(evt) {
   jobInput.value = '';
 }
 
-popupAddForm.addEventListener('submit', submitForm);
+popupAddForm.addEventListener('submit', submitAddCardForm);
 
 editBtnProfile.addEventListener('click', popupOpenEditBtn);
 

@@ -1,12 +1,12 @@
 import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
-    constructor(popupSelector, submitCallback) {
-        super();
-        this._popup = popupSelector;
-        this._form = popupSelector;
-        this._submitBtn = document.querySelector(".popup__submit");
-        this._submitCallback = submitCallback;
+  constructor(popupElement, submitCallback) {
+      super();
+    this._popup = popupElement;
+    this._form = popupElement;
+    this._submitBtn = document.querySelector(".popup__submit");
+    this._submitCallback = submitCallback;
     }
 
     _getInputValues() {
@@ -22,10 +22,4 @@ export default class PopupWithForm extends Popup {
         super.close();
         // this._form.reset();
     }
-
-    _editProfile(){
-
-    }
-
-
 }
