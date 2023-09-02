@@ -102,7 +102,8 @@ function render() {
 
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  const card =  createCardElement(popupAddCard.getInputValues());
+  const cardData = popupAddCard.getInputValues();
+  const card =  createCardElement({name: cardData.place, link: cardData.link});
   cardsSection.addItem(card);
   popupAddCard.close();
 }
