@@ -10,9 +10,7 @@ export default class PopupWithForm extends Popup {
     }
 
     getInputValues() {
-     
     const formData = new FormData(this._form);
-      // return { name: formData.get('input-place'), link: formData.get('input-link') }
       const object = {};
       formData.forEach(function (value, key) {
         object[key] = value;
@@ -26,7 +24,6 @@ export default class PopupWithForm extends Popup {
     }
 
     close() {
-      debugger
         super.close();
         this._form.reset();
         this._submitBtn.setAttribute("disabled", true);

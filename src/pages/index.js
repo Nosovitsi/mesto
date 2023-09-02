@@ -17,7 +17,6 @@ import {
   nameInput,
   nameValue,
   popupAddForm,
-  popupEditForm,
   popupEdit,
   profileAddButton,
   viewCard,
@@ -77,13 +76,6 @@ function popupOpenEditBtn() {
   popupEditProfile.open();
 }
 
-// function profilePopupFormSubmit(evt) {
-//   evt.preventDefault();
-//   nameValue.textContent = nameInput.value;
-//   jobValue.textContent = jobInput.value;
-//   popupEditProfile.close();
-// }
-
 /* Add Btn */
 function popupOpenAddBtn() {
   popupAddCard.open();
@@ -116,10 +108,8 @@ function submitAddCardForm(evt) {
 }
 
 function submitFormProfile(evt) {
-  debugger
+
   evt.preventDefault();
-  evt.stopPropagation();
-  // profile.setUserInfo({ name: nameInput.value, job: jobInput.value})
   profile.setUserInfo(popupEditProfile.getInputValues())
   popupEditProfile.close()
 }

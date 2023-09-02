@@ -15,6 +15,5 @@ export default class PopupWithImage extends Popup {
         const popupImage = this._popup.querySelector('.popup__view-image');
         popupImage.src = card.link;
         popupImage.alt = card.name;
-        
     }
 }
