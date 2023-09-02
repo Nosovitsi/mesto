@@ -1,4 +1,4 @@
-export const popupEditProfile = document.querySelector('.popup_edit');
+export const popupEdit = document.querySelector('.popup_edit');
 export const editBtnProfile = document.querySelector('.profile__edit-button');
 export const addFormCloseButton = document.querySelector('.close-add-form');
 export const editFormCloseButton = document.querySelector('.close-edit-form');

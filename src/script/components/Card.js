@@ -4,7 +4,7 @@ export class Card {
     this._template = template;
     this._card = card;
     this._popup = document.querySelector(popup);
-    this._handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick.bind(this);
   }
 
   _getTemplate() {
@@ -18,11 +18,15 @@ export class Card {
     // вернём DOM-элемент карточки
     return cardElement;
   }
+
+get _cardImage(){
+  return this._element.querySelector('.card__image');
+}
+
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.card__image').src = this._card.link;
-    this._element.querySelector('.card__image').alt = this._card.name;
-    // this._element.querySelector('.card__name').textContent = this._card.name;
+    this._cardImage.src = this._card.link;
+    this._cardImage.alt = this._card.name;
     this._element.querySelector('.card__description').textContent = this._card.name;
     this._setEventListeners();
     return this._element;
@@ -46,7 +50,7 @@ export class Card {
     image.alt = this._card.name;
     this._popup.querySelector('.popup__description').textContent = this._card.name;
     // openPopup(this._popup);
-    this._handleCardClick(this._popup);
+    this._handleCardClick(this._card);
   }
   _setEventListeners() {
     this._element.querySelector('.card__like').addEventListener('click', this._like);

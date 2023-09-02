@@ -10,6 +10,7 @@ export class FormValidator {
     this._formElement = document.querySelector(formSelector);
     this._submitButton = this._formElement.querySelector(config.submitButtonSelector);
     this._inputElements = Array.from(this._formElement.querySelectorAll(config.inputSelector));
+
   }
 
   // Блокировка кнопки
@@ -26,6 +27,7 @@ export class FormValidator {
 
   // Изменения состояния кнопки
   _toggleButtonState() {
+    debugger
     if (this._isActive()) {
       this.enabledButton();
     } else {

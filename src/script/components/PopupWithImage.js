@@ -1,16 +1,20 @@
 import Popup from "./Popup";
 
 export default class PopupWithImage extends Popup {
-  constructor(popupElement, popupImage) {
-
+  constructor(popupElement) {
     super(popupElement);
-    this._popupImage = popupImage;
     }
 
-    open(element) {
-        super.open();
+  getInputValues() {
+    const formData = new FormData(this._form);
+    return { name: formData.get('input-place'), link: formData.get('input-link') }
+  }
 
-        this._popupImage.src = element.link;
-        this._popupImage.alt = element.alt;
+    open(card) {
+        super.open();
+        const popupImage = this._popup.querySelector('.popup__view-image');
+        popupImage.src = card.link;
+        popupImage.alt = card.name;
+        
     }
 }

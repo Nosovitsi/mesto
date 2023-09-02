@@ -1,10 +1,7 @@
 import './index.css';
-
 import { initialCards } from "../script/utils/cards";
 import { Card } from "../script/components/Card";
 import { FormValidator } from "../script/components/FormValidator";
-import { closePopup } from "../script/popup";
-import { openPopup } from "../script/popup";
 import Section from "../script/components/Section";
 import PopupWithImage from "../script/components/PopupWithImage";
 import PopupWithForm from "../script/components/PopupWithForm";
@@ -17,17 +14,25 @@ import {
   editFormCloseButton,
   jobInput,
   jobValue,
-  linkInput,
   nameInput,
   nameValue,
-  placeInput,
   popupAddForm,
   popupEditForm,
-  popupEditProfile,
+  popupEdit,
   profileAddButton,
   viewCard,
   viewCardCloseBtn,
 } from "../script/utils/variables";
+
+/* Создание экземпляра класса Popup */
+const popupEditProfile = new PopupWithForm(popupEdit, submitFormProfile);
+const popupAddCard = new PopupWithForm(addCard);
+const popupView = new PopupWithImage(viewCard);
+
+popupEditProfile.setEventListeners();
+popupAddCard.setEventListeners();
+popupView.setEventListeners();
+console.log(popupView);
 
 function renderer(item) {
   const card = createCardElement(item);
@@ -44,15 +49,6 @@ const profile = new UserInfo({
   profileName: nameValue,
   profileJob: jobValue,
 });
-
-/* Создание экземпляра класса Popup */
-const popupEdit = new PopupWithForm(popupEditProfile, submitFormProfile);
-const popupAddCard = new PopupWithForm(addCard);
-const popupView = new PopupWithImage(viewCard);
-
-popupEdit.setEventListeners();
-popupAddCard.setEventListeners();
-popupView.setEventListeners();
 
 const inputEvent = new Event("input");
 
@@ -73,31 +69,32 @@ validatorAddCard.enableValidation();
 /* Edit Btn */
 
 function popupOpenEditBtn() {
-  nameInput.value = nameValue.textContent;
-  jobInput.value = jobValue.textContent;
+  const { name, job } = profile.getUserInfo();
+  nameInput.value = name;
+  jobInput.value = job;
   nameInput.dispatchEvent(inputEvent);
   jobInput.dispatchEvent(inputEvent);
-  openPopup(popupEditProfile);
+  popupEditProfile.open();
 }
 
-function profilePopupFormSubmit(evt) {
-  evt.preventDefault();
-  nameValue.textContent = nameInput.value;
-  jobValue.textContent = jobInput.value;
-  closePopup();
-}
+// function profilePopupFormSubmit(evt) {
+//   evt.preventDefault();
+//   nameValue.textContent = nameInput.value;
+//   jobValue.textContent = jobInput.value;
+//   popupEditProfile.close();
+// }
 
 /* Add Btn */
 function popupOpenAddBtn() {
-  openPopup(addCard);
+  popupAddCard.open();
 }
 
 /*Profile add image*/
 profileAddButton.addEventListener('click', popupOpenAddBtn);
-popupEditForm.addEventListener('submit', profilePopupFormSubmit);
+// popupEditForm.addEventListener('submit', popupOpenEditBtn);
 
 function createCardElement(card) {
-  return new Card('.template', card, '.popup_view', openPopup ).generateCard();
+  return new Card('.template', card, '.popup_view', popupView.open  ).generateCard();
 }
 
 function renderCard(card) {
@@ -111,24 +108,20 @@ function render() {
   })
 }
 
-// render();
-
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  const formData = { name: placeInput.value, link: linkInput.value };
-  renderCard(formData);
-  closePopup()
-  placeInput.value = '';
-  linkInput.value = '';
+  const card =  createCardElement(popupAddCard.getInputValues());
+  cardsSection.addItem(card);
+  popupAddCard.close();
 }
 
 function submitFormProfile(evt) {
+  debugger
   evt.preventDefault();
-  nameValue.textContent = nameInput.value;
-  jobValue.textContent = jobInput.value;
-  closePopup()
-  nameInput.value = '';
-  jobInput.value = '';
+  evt.stopPropagation();
+  // profile.setUserInfo({ name: nameInput.value, job: jobInput.value})
+  profile.setUserInfo(popupEditProfile.getInputValues())
+  popupEditProfile.close()
 }
 
 popupAddForm.addEventListener('submit', submitAddCardForm);
@@ -136,13 +129,13 @@ popupAddForm.addEventListener('submit', submitAddCardForm);
 editBtnProfile.addEventListener('click', popupOpenEditBtn);
 
 addFormCloseButton.addEventListener('click', () => {
-  closePopup()
+  popupAddCard.close()
 });
 
 editFormCloseButton.addEventListener('click', () => {
-  closePopup()
+  popupEditProfile.close()
 });
 
 viewCardCloseBtn.addEventListener('click', () => {
-  closePopup()
+  popupView.close()
 });
