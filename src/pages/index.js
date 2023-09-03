@@ -20,7 +20,7 @@ import {
   popupEdit,
   profileAddButton,
   viewCard,
-  viewCardCloseBtn,
+  
 } from "../script/utils/variables";
 
 /* Создание экземпляра класса Popup */
@@ -28,10 +28,11 @@ const popupEditProfile = new PopupWithForm(popupEdit, submitFormProfile);
 const popupAddCard = new PopupWithForm(addCard);
 const popupView = new PopupWithImage(viewCard);
 
+
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupView.setEventListeners();
-console.log(popupView);
+
 
 function renderer(item) {
   const card = createCardElement(item);
@@ -67,7 +68,8 @@ validatorAddCard.enableValidation();
 
 /* Edit Btn */
 
-function popupOpenEditBtn() {
+function openEditProfileForm() {
+  validatorEditProfile.disabledSubmitButton();
   const { name, job } = profile.getUserInfo();
   nameInput.value = name;
   jobInput.value = job;
@@ -77,16 +79,16 @@ function popupOpenEditBtn() {
 }
 
 /* Add Btn */
-function popupOpenAddBtn() {
+function openAddCardForm() {
+  validatorAddCard.disabledSubmitButton();
   popupAddCard.open();
 }
 
 /*Profile add image*/
-profileAddButton.addEventListener('click', popupOpenAddBtn);
-// popupEditForm.addEventListener('submit', popupOpenEditBtn);
+profileAddButton.addEventListener('click', openAddCardForm);
 
 function createCardElement(card) {
-  return new Card('.template', card, '.popup_view', popupView.open  ).generateCard();
+  return new Card('.template', card, popupView.open  ).generateCard();
 }
 
 function renderCard(card) {
@@ -94,39 +96,21 @@ function renderCard(card) {
   cards.prepend(element);
 }
 
-function render() {
-  initialCards.forEach((card) => {
-    renderCard(card)
-  })
-}
-
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  const cardData = popupAddCard.getInputValues();
+  const cardData = popupAddCard._getInputValues();
   const card =  createCardElement({name: cardData.place, link: cardData.link});
   cardsSection.addItem(card);
   popupAddCard.close();
 }
 
-function submitFormProfile(evt) {
+function submitFormProfile(data) {
 
-  evt.preventDefault();
-  profile.setUserInfo(popupEditProfile.getInputValues())
+  profile.setUserInfo(data)
   popupEditProfile.close()
 }
 
 popupAddForm.addEventListener('submit', submitAddCardForm);
 
-editBtnProfile.addEventListener('click', popupOpenEditBtn);
+editBtnProfile.addEventListener('click', openEditProfileForm);
 
-addFormCloseButton.addEventListener('click', () => {
-  popupAddCard.close()
-});
-
-editFormCloseButton.addEventListener('click', () => {
-  popupEditProfile.close()
-});
-
-viewCardCloseBtn.addEventListener('click', () => {
-  popupView.close()
-});

@@ -1,9 +1,9 @@
 export class Card {
 
-  constructor(template, card, popup, handleCardClick) {
+  constructor(template, card, handleCardClick) {
     this._template = template;
     this._card = card;
-    this._popup = document.querySelector(popup);
+    // this._popup = document.querySelector(popup);
     this._handleCardClick = handleCardClick.bind(this);
   }
 
@@ -43,13 +43,7 @@ get _cardImage(){
   }
 
   // функция окрытия изображения в большом окне //
-  _image(evt) {
-    // this._popup.classList.add('popup_opened');
-    const image = this._popup.querySelector('.popup__view-image');
-    image.src = this._card.link;
-    image.alt = this._card.name;
-    this._popup.querySelector('.popup__description').textContent = this._card.name;
-    // openPopup(this._popup);
+  _image() {
     this._handleCardClick(this._card);
   }
   _setEventListeners() {

@@ -14,7 +14,7 @@ export class FormValidator {
   }
 
   // Блокировка кнопки
-  disabledButton() {
+  disabledSubmitButton() {
     this._submitButton.disabled = true;
     this._submitButton.classList.add(this._inactiveButtonClass);
   }
@@ -27,11 +27,10 @@ export class FormValidator {
 
   // Изменения состояния кнопки
   _toggleButtonState() {
-    debugger
     if (this._isActive()) {
       this.enabledButton();
     } else {
-      this.disabledButton();
+      this.disabledSubmitButton();
     }
   }
 

@@ -9,7 +9,7 @@ export default class PopupWithForm extends Popup {
     this._submitCallback = submitCallback;
     }
 
-    getInputValues() {
+    _getInputValues() {
     const formData = new FormData(this._form);
       const object = {};
       formData.forEach(function (value, key) {
@@ -20,13 +20,20 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        this._form.addEventListener("submit", this._submitCallback);
+        this._form.addEventListener("submit", this._sendForm);
+    }
+
+    _sendForm = (evt)  => {
+      evt.preventDefault();
+      const inputValues = this._getInputValues();
+if (this._submitCallback){
+  this._submitCallback(inputValues);
+}    
     }
 
     close() {
         super.close();
         this._form.reset();
-        this._submitBtn.setAttribute("disabled", true);
-        this._submitBtn.classList.add('popup__submit_inactive');
+      
     }
 }
